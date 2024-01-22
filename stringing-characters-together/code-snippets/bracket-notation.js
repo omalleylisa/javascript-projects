@@ -1,4 +1,4 @@
-let jsCreator = "Brendan Eich";
-
-console.log(jsCreator[-1]);
-console.log(jsCreator[42]);
+let input = "fake.email@launchcode.org";
+let atIndex = input.indexOf("@");
+let username = input.slice(0, atIndex);
+console.log(username);
