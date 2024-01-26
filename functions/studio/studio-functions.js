@@ -1,5 +1,11 @@
 //We want to COMPLETELY reverse an array by flipping the order of the entries AND flipping the order of characters in each element.
 
+function reverse(s) {
+    return s.split('').reverse().join('');
+}
+let str = "launchCode";
+console.log(reverse(str));
+
 // Part One: Reverse Characters
 
 // 1. Define the function as reverseCharacters. Give it one parameter, which will be the string to reverse.
@@ -9,6 +15,16 @@
 // 5. Use console.log(reverseCharacters(myVariableName)); to call the function and verify that it correctly reverses the characters in the string.
 // 6. Optional: Use method chaining to reduce the lines of code within the function.
 
+function reverseCharacters(strToReverse){
+ let charArray = strToReverse.split('');
+ let reversedArray = charArray.reverse();
+ let reversedStr = reversedArray.join('');
+    return reversedStr
+}
+
+let variableName = 'example';
+console.log(reverseCharacters(variableName));
+
 // Part Two: Reverse Digits
 
 // 1. Add an if statement to reverseCharacters to check the typeof the parameter.
@@ -16,6 +32,20 @@
 // 3. If typeof is ’number’, convert the parameter to a string, reverse the characters, then convert it back into a number.
 // 4. Return the reversed number.
 // 5. Be sure to print the result returned by the function to verify that your code works for both strings and numbers. Do this before moving on to the next exercise.
+
+function reverseCharacters(original) {
+    let reversed;
+    if (typeof original === 'number') {
+        reversed = original.toString().split('').reverse().join('');
+        return Number(reversed);
+    } else {
+        reversed = original.split('').reverse().join('');
+        return reversed;
+    }
+}
+console.log(reverseCharacters("12345"));  // For testing
+
+
 
 // Part Three: Complete Reversal
 
@@ -29,6 +59,19 @@
 let arrayTest1 = ['apple', 'potato', 'Capitalized Words'];
 let arrayTest2 = [123, 8897, 42, 1168, 8675309];
 let arrayTest3 = ['hello', 'world', 123, 'orange'];
+
+
+function doubleReverse(originalArray) {
+    let oldArray = [];
+
+    for (i = 0; i < originalArray.length; i++) {
+      oldArray.push(reverseCharacters(originalArray[i]));
+    } return oldArray.reverse();
+}
+console.log(doubleReverse(arrayTest1));
+console.log(doubleReverse(arrayTest2));
+console.log(doubleReverse(arrayTest3));
+
 
 // Bonus Missions
 
