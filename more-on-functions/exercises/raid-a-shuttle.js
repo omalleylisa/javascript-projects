@@ -19,13 +19,35 @@ function holdStatus(arr){
 }
 
 let fuelLevel = 200000;
+// here is my stealthy function
+let nonSuspiciousFunction = function(a) {
+  if (checkFuel(a) === 'green') {
+    return a - 100001;
+ }
+ else if (checkFuel(a) === 'yellow') {
+    return a - 50001;
+ }
+ else {
+    return a;
+ }
+}
 let cargoHold = ['meal kits', 'space suits', 'first-aid kit', 'satellite', 'gold', 'water', 'AE-35 unit'];
 
 console.log("Fuel level: " + checkFuel(fuelLevel));
 console.log("Hold status: " + holdStatus(cargoHold));
 
-/* Steal some fuel from the shuttle:
- * /
+// Steal some fuel from the shuttle:
+// let nonSuspiciousFunction = function(a) {
+//   if (checkFuel(a) === 'green') {
+//     return a - 100001;
+//  }
+//  else if (checkFuel(a) === 'yellow') {
+//     return a - 50001;
+//  }
+//  else {
+//     return a;
+//  }
+// }
  
 //a). Define an anonymous function and set it equal to a variable with a normal, non-suspicious name. The function takes one parameter. This will be the fuel level on the shuttle.
 
@@ -35,8 +57,25 @@ console.log("Hold status: " + holdStatus(cargoHold));
 
 //d). Decide where to best place your function call to gather our new fuel.
 
-/* Next, liberate some of that glorious cargo.
- * /
+// Next, liberate some of that glorious cargo.
+
+let sneakySnatching = function(cargoArray, index = 0, swipedItems = []) {
+  if (index >= cargoArray.length) {
+    return swipedItems;
+  }
+
+  if (cargoArray[index] === "gold") {
+    swipedItems.push("gold");
+    cargoArray[index] = "moon dust";
+  } else if (cargoArray[index] === "satellite") {
+    swipedItems.push("satellite");
+    cargoArray[index] = "astronaut socks";
+  }
+
+  return sneakySnatching(cargoArray, index + 1, swipedItems);
+};
+
+
 
 //a). Define another anonymous function with an array as a parameter, and set it equal to another innocent variable.
 
@@ -46,12 +85,23 @@ console.log("Hold status: " + holdStatus(cargoHold));
 
 //d). Don’t get hasty, matey! Remember to test your function.
 
-/* Finally, you need to print a receipt for the accountant. Don’t laugh! That genius knows MATH and saves us more gold than you can imagine.
- * /
+// Finally, you need to print a receipt for the accountant. Don’t laugh! That genius knows MATH and saves us more gold than you can imagine.
  
+let swipedItems = sneakySnatching(cargoHold);
+
+let irs = function(levelOfFuel, itemsInCargo) {
+  let stolenFuel = nonSuspiciousFunction(levelOfFuel);
+  return `Raided ${stolenFuel} kg of fuel from the tanks, and stole ${swipedItems.join(' and ')} from the cargo hold.`;
+}
+
+console.log(irs(fuelLevel, cargoHold));
+console.log(cargoHold);
+ 
+
 //a). Define a function called irs that can take fuelLevel and cargoHold as arguments.
 	
 //b). Call your anonymous fuel and cargo functions from within irs.
+
 
 //c). Use a template literal to return, "Raided _____ kg of fuel from the tanks, and stole ____ and ____ from the cargo hold."
 
