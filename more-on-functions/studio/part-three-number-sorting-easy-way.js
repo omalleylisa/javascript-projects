@@ -5,4 +5,13 @@ let nums3 = [200, 5, 4, 10, 8, 5, -3.3, 4.4, 0];
 
 //Sort each array in ascending order.
 
+let nums3A = [5, 10, 2, 42];
+nums3A.sort(function (a,b) {
+    return a - b;
+})
+
 //Sort each array in decending order.
+let nums3B = [-2, 0, -18, -44, 5, 3, 0, 3];
+nums3B.sort(function(a,b) {
+    return b - a;
+})
