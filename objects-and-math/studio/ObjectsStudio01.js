@@ -1,12 +1,36 @@
 // Code your selectRandomEntry function here:
 
+function selectRandomEntry(arr) {
+  let i = Math.floor(Math.random()*idNumbers.length);
+  return arr.splice(i, 1)[0];
+}
 
 // Code your buildCrewArray function here:
 
-
 let idNumbers = [291, 414, 503, 599, 796, 890];
+let selectedCrew = [];
+
+selectedCrew.push(selectRandomEntry(idNumbers));
+selectedCrew.push(selectRandomEntry(idNumbers));
+selectedCrew.push(selectRandomEntry(idNumbers));
+
+function buildCrewArray(ids, num) {
+  let crewIds = [];
+  while (crewIds.length < num) {
+    let selectedId = selectRandomEntry(ids);
+    if (!crewIds.includes(selectedId)) {
+      crewIds.push(selectedId);
+    }
+  }
+  return crewIds;
+}
+let crewIds = buildCrewArray(idNumbers, 3);
+console.log("Here is the crew:", crewIds);
+
 
 // Here are the candidates and the 'animals' array:
+
+
 let candidateA = {
   'name':'Gordon Shumway',
   'species':'alf',
@@ -51,5 +75,13 @@ let candidateF = {
 };
 
 let animals = [candidateA,candidateB,candidateC,candidateD,candidateE,candidateF];
+
+function selectCrew (crewIds, animals) {
+
+// function to 
+}
+
+
+  let crew = selectCrew(crewIds, animals);
 
 // Code your template literal and console.log statements:
